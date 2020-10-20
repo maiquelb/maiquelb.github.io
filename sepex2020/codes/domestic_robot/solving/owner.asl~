@@ -1,0 +1,4 @@
+!get(beer). // initial goal
+
++!get(beer)
+   <- .send(robot,achieve,has(owner,beer)).

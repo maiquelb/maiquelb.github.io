@@ -1,0 +1,22 @@
+/* Initial beliefs */
+
+// initially, I believe that there are some beers in the fridge
+available(beer,fridge).
+
+// my owner should not consume more than 10 beers a day :-)
+limit(beer,10).
+
++!has(owner,beer) 
+   <- .print("The owner wants beer");
+      !go_to(fridge);
+	  open(fridge);
+	  get(beer);
+	  !go_to(owner);
+	  hand_in(beer).
+	  
+	  	  
++!go_to(Place): not at(robot,Place)
+   <- move_towards(Place);
+      !go_to(Place).
+	  
++!go_to(Place): at(robot,Place).

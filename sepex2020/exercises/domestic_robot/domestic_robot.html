@@ -511,7 +511,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p> Um robô doméstico tem o objetivo de servir cerveja ao seu proprietário. O proprietário solicita uma cerveja e o robô vai até a geladeira, pega uma garrafa e a leva até o proprietário. Entretanto, o robô deve ficar atento para que o estoque de cerveja não se esgote. Se necessário, deve comprar mais, utilizando o serviço de entregas do supermercado. Além disso, o robô deve seguir normas governamentais que estabelecem o limite diário de cervejas que um robô deste tipo pode fornecer ao seu proprietário.</p>
 </div>
 <p>
-Este sistema é pode ser ilustrado segundo a notação Prometheus, conforme a imagem abaixo:
+Este sistema pode ser ilustrado segundo a notação Prometheus, conforme a imagem abaixo:
 </p>
 <div class="paragraph">
 <p><span class="image"><img src="./images/overview	.png" alt="ambiente"></span></p>
@@ -523,14 +523,14 @@ O sistema é, assim, composto por três agentes: o robô, o proprietário e o su
 <div class="ulist">
 <ul>
 <li>
-<p><code>at(robot,Place)</code>: indica o local em que o robô está posicionado (que substituirá a variável <code>Place</code>). Por simplicidade, somente dois locais são percebidos: <code>fridge</code>, quando o robô está diante da geladeira, e <code>owner</code>, quando o robô está diante do proprietário. Assim, o robô poderá perceber <code>at(robot,fridge)</code> e <code>at(robot,owner)</code>. Além disso, o robô terá qualquer percepção <code>at</code> se não estiver diante do proprietário ou da geladeira;
+<p><code>at(robot,Place)</code>: indica o local em que o robô está posicionado (que substituirá a variável <code>Place</code>). Por simplicidade, somente dois locais são percebidos: <code>fridge</code>, quando o robô está diante da geladeira, e <code>owner</code>, quando o robô está diante do proprietário. Assim, o robô poderá perceber <code>at(robot,fridge)</code> e <code>at(robot,owner)</code>. Além disso, o robô não terá qualquer percepção <code>at</code> se não estiver diante do proprietário ou da geladeira;
 </p>
 </li>
 <li>
 <p><code>stock(beer,N)</code>: quando a geladeira estiver aberta, esta percepção indicará a quatidade de cerveja em estoque, representada pela variável <code>N</code>;</p>
 </li>
 <li>
-<p><code>has(owner,beer)</code>: percepção obtida tanto pelo robô quanto por seu proprietário quando este tem uma garrava de cerveja não vazia.</p>
+<p><code>has(owner,beer)</code>: percepção obtida tanto pelo robô quanto por seu proprietário quando este tem uma garrafa de cerveja não vazia.</p>
 </li>
 </div>
 
@@ -544,6 +544,6 @@ Além de perceber o ambiente e agir sobre ele, os agentes também podem trocar m
 <h3 id="_enunciado">Enunciado</h2>
 <p>Implementar o sistema descrito acima em Jason.
 </p>
-<p>Uma implementação inicial está disponível <a href="https://maiquelb.github.io/sepex2020/codes/domestic_robot/domestic_robot.zip">aqui</a>.</p>
+<p>Uma implementação inicial está disponível <a href="https://maiquelb.github.io/sepex2020/codes/domestic_robot/domestic-robot.zip">aqui</a>.</p>
 </body>
 </html>

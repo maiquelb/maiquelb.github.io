@@ -535,113 +535,15 @@ O sistema é, assim, composto por três agentes: o robô, o proprietário e o su
 </div>
 
 <div class="paragraph">
-<p> A maioria das ações disponíveis aos agentes tem significado óbvio, exceto <code>move_towards</code></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>suck</code>: remover a sujeira do local em que o robô está posicionado;</p>
-</li>
-<li>
-<p><code>left</code>: move-se para a esquerda;</p>
-</li>
-<li>
-<p><code>right</code>: mover-se para a direita;</p>
-</li>
-<li>
-<p><code>up</code>: mover-se para cima;</p>
-</li>
-<li>
-<p><code>down</code>: mover-se para baixo.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p> Além disso, o robô recebe as seguintes percepções do ambiente:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>dirty</code>: o robô está em uma posição suja;</p>
-</li>
-<li>
-<p><code>clean</code>: o robô está em uma posição limpa;</p>
-</li>
-<li>
-<p><code>pos(X)</code>: a posição do robô é X (0 &lt; X &lt; 5).</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>O diagrama abaixo, usando a notação Prometheus, ilustra as interações entre o robô e o ambiente.</p>
-</div>
-<div class="paragraph">
-<p><span class="image"><img src="./images/overview.png" alt="overview"></span></p>
-</div>
-<div class="paragraph">
-<p>Uma implementação inicial deste sistema está disponível
-<a href="./VacuumCleaning-1.zip">aqui</a>.</p>
-</div>
-<div class="paragraph">
-<p><strong>Informações úteis</strong></p>
-</div>
-<div class="paragraph">
-<p>Pode-se começar a programar o agente pensando sobre como ele poderia reagir às percepções disponíveis. Por exemplo, o que ele deveria fazer ao perceber "dirty"? Naturalmente, a ação indicada seria "suck". Em Jason, programa-se este tipo de reação através do seguinte plano:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight nowrap"><code data-lang="jasonagent"><span></span><span class=" tok--EventBel">+</span><span class=" tok--Belief">dirty</span> <span class="tok-o">&lt;-</span> <span class=" tok--Action">suck</span><span class="tok-o">.</span> <span class="tok-c1">// when dirty is perceived, do the action suck</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Assim, um agente inicial e muito reativo pode simplesmente reagira a cada percepção e ser programado conforme exibido abaixo (substituindo "someaction" pela ação que se avalia mais apropriada e removendo planos se julgar-se necessário):</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight nowrap"><code data-lang="jasonagent"><span></span><span class=" tok--EventBel">+</span><span class=" tok--Belief">dirty</span>  <span class="tok-o">&lt;-</span> <span class=" tok--Action">someaction</span><span class="tok-o">.</span>
-<span class=" tok--EventBel">+</span><span class=" tok--Belief">clean</span>  <span class="tok-o">&lt;-</span> <span class=" tok--Action">someaction</span><span class="tok-o">.</span>
-<span class=" tok--EventBel">+</span><span class=" tok--Belief">pos</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">)</span> <span class="tok-o">&lt;-</span> <span class=" tok--Action">someaction</span><span class="tok-o">.</span>
-<span class=" tok--EventBel">+</span><span class=" tok--Belief">pos</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">)</span> <span class="tok-o">&lt;-</span> <span class=" tok--Action">someaction</span><span class="tok-o">.</span>
-<span class=" tok--EventBel">+</span><span class=" tok--Belief">pos</span><span class="tok-p">(</span><span class="tok-mi">3</span><span class="tok-p">)</span> <span class="tok-o">&lt;-</span> <span class=" tok--Action">someaction</span><span class="tok-o">.</span>
-<span class=" tok--EventBel">+</span><span class=" tok--Belief">pos</span><span class="tok-p">(</span><span class="tok-mi">4</span><span class="tok-p">)</span> <span class="tok-o">&lt;-</span> <span class=" tok--Action">someaction</span><span class="tok-o">.</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Como todas as percepções são incluídas na base de crenças, elas podem também ser usadas para selecionar planos adequados, como no exemplo a seguir:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight nowrap"><code data-lang="jasonagent"><span></span><span class=" tok--EventBel">+</span><span class=" tok--Belief">pos</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">)</span> <span class="tok-o">:</span> <span class=" tok--Belief">clean</span> <span class="tok-o">&lt;-</span> <span class=" tok--Action">someaction</span><span class="tok-o">.</span>   <span class="tok-c1">// whenever I perceive I&#39;m in pos(1) and</span>
-                                 <span class="tok-c1">// I believe that my position is clean,</span>
-                                 <span class="tok-c1">// do some action.</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Pode-se perceber que essa abordagem reativa apresenta limitações para especificar um comportamento adequado para o robô-aspirador. De fato, este agente deveria ser programado como se tivesse <strong>goals</strong>, e, em particular, um goal de manter a casa limpa. A melhor maneira de definir um goal persistente é através de um plano recursivo. Por exemplo, o código abaixo implementa um goal persistente (representado por p), de imprimir "a":</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight nowrap"><code data-lang="jasonagent"><span></span><span class=" tok--EventGoal">!</span><span class=" tok--Goal">p</span><span class="tok-o">.</span>                   <span class="tok-c1">// initial goal</span>
-<span class=" tok--EventGoal">+!</span><span class=" tok--Goal">p</span> <span class="tok-o">&lt;-</span> <span class="tok-nb">.print</span><span class="tok-p">(</span><span class=" tok--Action">a</span><span class="tok-p">)</span><span class="tok-o">;</span> <span class=" tok--EventGoal">!</span><span class=" tok--Goal">p</span><span class="tok-o">.</span> <span class="tok-c1">// to achieve the goal p, print &quot;a&quot;</span>
-                      <span class="tok-c1">// and after has p as a new goal.</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Alguns comentários sobre possíveis soluções estáo disponíveis
-<a href="http://jason.sourceforge.net/mini-tutorial/getting-started/exercise-answers.txt">aqui</a>.</p>
-</div>
-<div class="paragraph">
-<p>This document has shown a very limited range of Jason&#8217;s features; the
-next section contains references where you can find further
-information.</p>
-</div>
-</div>
-</div>
-<div id="footnotes">
-<hr>
-<div class="footnote" id="_footnotedef_1">
-<a href="#_footnoteref_1">1</a>. Baseado no material disponível <a href="http://jason.sourceforge.net/mini-tutorial/getting-started/#_footnoteref_1">here</a>.
-</div>
-</div>
+<p> A maioria das ações disponíveis aos agentes tem significado óbvio, exceto <code>move_towards(Place)</code>. Por simplicidade, considera-se que ao executar essa ação, o robô sempre se movimentará com sucesso até <code>Place</code>. Não é necessário preocupar-se em tratar falhas no robô e nem mesmo em definir sua trajetória.
+</p>
+<p>
+Além de perceber o ambiente e agir sobre ele, os agentes também podem trocar mensagens entre si. As mensagens são denotadas pelos "envelopes" na imagem acima. O proprietário envia uma mensagem ao robô quando deseja uma cerveja. Essa mensagem é do tipo "achieve". Assim, ao recebê-la, o robô passa a ter o objetivo <code>has(owner,beee)</code>. De forma semelhante, o robô envia uma mensagem do tipo "achieve" ao agente que representa o supermercado, que, quando a recebe, passa a ter o objetivo <code>order(beer,N)</code>. Quando a cerveja é entregue, o agente supermercado envia uma mensagem do tipo "tell" ao robô, que adquire a crença <code>delivered(beer,N,OrderId)</code>.
+</p>
+
+<h3 id="_enunciado">Enunciado</h2>
+<p>Implementar o sistema descrito acima em Jason.
+</p>
+<p>Uma implementação inicial está disponível <a href="https://maiquelb.github.io/sepex2020/codes/domestic_robot/domestic_robot.zip">aqui</a>.</p>
 </body>
 </html>

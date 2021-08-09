@@ -22,4 +22,4 @@ jobs:
         java-version: '11'
         distribution: 'adopt'
     - name: Build with Ant
-      run: zip -r devs1.zip devs/*
+      run: zip -r devs1.zip .*

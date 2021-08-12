@@ -9,17 +9,14 @@ on:
   pull_request:
     branches: [ master ]
 
+
+  
 jobs:
-  build:
-
+  zip-files:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up JDK 11
-      uses: actions/setup-java@v2
-      with:
-        java-version: '11'
-        distribution: 'adopt'
-    - name: Build with Ant
-      run: zip -r devs1.zip devs/*
+      - uses: actions/checkout@v2
+      - uses: papeloto/action-zip@v1
+        with:
+          files: devs1/
+          dest: result.zip

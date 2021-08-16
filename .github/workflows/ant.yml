@@ -18,5 +18,5 @@ jobs:
       - uses: actions/checkout@v2
       - uses: papeloto/action-zip@v1
         with:
-          files: devs1/
-          dest: result.zip
+          files: devs1/*
+          dest: devs1/result.zip

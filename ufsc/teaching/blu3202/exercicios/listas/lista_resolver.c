@@ -93,7 +93,7 @@ lstProduto *insere_apos(lstProduto *lista, produto dado, produto posicao){
 produto *novo_produto(){
    produto *novo = malloc(sizeof(produto));
    printf("Nome do produto: ");
-   scanf("%s",&((*novo).nome));
+   scanf("%s",(*novo).nome);
    printf("Preço: ");
    scanf("%f",&((*novo).preco));
    return novo;
@@ -137,7 +137,8 @@ int main(){
          getchar();
       }else
       if(opcao==6){
-         produto *p = novo_produto();          
+         produto *novo = novo_produto();          
+         lstProduto *p = busca(lista, *novo);       
          if(p==NULL)
             printf("Produto não encontrado.\n"); 
          else

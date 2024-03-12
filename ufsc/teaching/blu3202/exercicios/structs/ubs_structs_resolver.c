@@ -102,6 +102,8 @@ double calcular_distancia(double lat1, double lon1, double lat2, double lon2) {
     return distance;
 }
 
+
+
 /*
    Imprime a lista de todas as UBSs contidas no vetor "ubs" passado como parâmetro
 */
@@ -112,28 +114,37 @@ void lista_ubs(Ubs ubs[]){
 }
 
 
+
 /* 
    Retorna a linha que contém o CNES passado como parâmetro. 
    Retorna -1 caso não encontre o CNES.
 */
 int procura_ubs(Ubs ubs[], char *cnes){
-   int i;
-   for(i=0;i<NUM_LINHAS;i++)
-      if(strcmp(ubs[i].cnes,cnes)==0)
-         return i;
-   return -1;
+   // ***** Exercício 3 ********
+   //
+   //Implementar uma função que localize, no vetor "ubs" passado como parâmetro, uma UBS cujo CNES seja igual ao informado no parâmetro "cnes". 
+   //A função deve retornar o número da linha em que a UBS se encontra e -1 caso a UBS não exista.  
+
+
+
+
+
+   // ***** Exercício 3(fim)
 }
 
 
 
 
-
+/*
+  Localiza as duas UBS mais próxima entre si (descartando aquelas que estão na mesma latitude-longitude).
+*/
 void ubs_mais_proximas(Ubs ubs[]){
    double menor_distancia = 999999999; //a variável "menor_distância" armazena a menor distância já calculada
    double distancia;
    int i, j, ubs1=-1, ubs2=-1; //as variáveis ubs1 e ubs2 armazenam as linhas que correspondem às UBSs mais próximas entre si
    for(i=0;i<NUM_LINHAS-1;i++){ //para cada UBS a partir da primeira
-      printf("Calculando distâncias - %d/%d concluído\n",i,NUM_LINHAS);
+      // Habilitar a linha abaixo caso deseje-se ver na tela o progresso das comparações
+      //printf("Calculando distâncias - %d/%d concluído\n",i,NUM_LINHAS);
       for(j=i+1;j<NUM_LINHAS;j++){ //compara a i-ésima UBS com todas as próximas         
          distancia = calcular_distancia(ubs[i].latitude,ubs[i].longitude,ubs[j].latitude,ubs[j].longitude); //calcula a distância entre as UBSs
          if(distancia<menor_distancia && distancia!=0){ //se encontrou uma distância menor do que a já computada
@@ -173,7 +184,6 @@ int main() {
           char cnes[8], c;
           while ((c = getchar()) != '\n' && c != EOF); //limpeza do buffer do teclado
           fgets(cnes,8, stdin); //ler a entrada do teclado e salvá-la na variável "cnes"
-          printf("valor lido %s\n", cnes);
           printf("Valor encontrado na linha %d\n", procura_ubs(ubs,cnes));
        }
        else

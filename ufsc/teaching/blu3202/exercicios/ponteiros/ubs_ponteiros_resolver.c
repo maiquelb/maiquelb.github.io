@@ -6,7 +6,7 @@
 #define MAX_LINE_LENGTH 1024
 #define MAX_CAMPOS 10
 #define DELIMITER ";"
-#define NUM_LINHAS 45364 //numero de linhas do arquivo CSV
+#define NUM_LINHAS 10000 //numero de linhas do arquivo CSV
 #define RADIUS_EARTH 6371000 // Raio médio da Terra em quilômetros
 
 typedef struct ubs{
@@ -159,7 +159,7 @@ void ubs_mais_proximas(Ubs ubs[]){
 
 
 int main() {
-    char *filename = "Unidades_Basicas_Saude-UBS.csv";    
+    char *filename = "Unidades_Basicas_Saude-UBS_10000.csv";    
     Ubs ubs[NUM_LINHAS]; //vetor para quardar cada uma das UBSs
     processa_csv(filename, ubs); //carregar os dados das UBSs no arquivo .csv para dentro do vetor
     

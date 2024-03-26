@@ -1,0 +1,34 @@
+<p><span style="font-family: arial, helvetica, sans-serif;">CAC3202 - Algoritmos e Estruturas de Dados</span></p>
+<p><span style="font-family: arial, helvetica, sans-serif;"></span></p>
+<h3><span style="font-family: arial, helvetica, sans-serif;">Exercícios sobre ponteiros e alocação dinâmica de memória:</span></h3>
+<p><span style="font-family: arial, helvetica, sans-serif;"></span></p>
+<p><span style="font-family: arial, helvetica, sans-serif;">O código disponível <a target="_blank" rel="noopener noreferrer" href="https://raw.githubusercontent.com/maiquelb/maiquelb.github.io/master/ufsc/teaching/blu3202/exercicios/ponteiros/ubs_ponteiros_resolver.c">aqui</a> é uma versão modificada do código trabalhado anteriormente. Nesta nova versão, o usuário deve selecionar quantas UBSs serão processadas a partir do arquivo disponível <a target="_blank" rel="noopener noreferrer" href="https://raw.githubusercontent.com/maiquelb/maiquelb.github.io/master/ufsc/teaching/blu3202/exercicios/Unidades_Basicas_Saude-UBS_10000.csv">aqui</a>.
+
+<br>
+Na nova versão do código, fazer os exercícios a seguir:
+<br>
+
+
+<ol><span style="font-family: arial, helvetica, sans-serif;">
+  <li>Localizar a expressão "Exercício 1". Comparar a linha comentada abaixo daquela em que a expressão foi localizada (versão antiga) com a linha posterior, que é a nova vesão. O que muda? </li>
+  <li>Localizar a expressão "Exercício 2". Fazer as seguintes mudanças na função <em>processa_ubs</em>:
+     <ul>
+        <li> A função deve retornar um ponteiro para um vetor de Ubs cujo tamanho corresponda à variável global <em>num_linhas</em> </li>
+        <li> A função deve receber apenas o parâmetro <em>filename</em> </li>
+     </ul>
+</li>
+  <li>Localizar a expressão "Exercício 3". Alterar a função <em>ubs_mais_proximas</em> para:</li>
+      <ol>
+         <li>Retornar a posição ocupada pelas duas UBSs mais próximas entre si no vetor de UBSs passado no parâmetro <em>ubs</ubs></em>;</li>
+         <li>Retornar a distância entre as UBSs mais próximas.</li>
+      </ol>
+      Observações:
+       <ul>
+          <li>Deve-se apagar a última linha da função original. A impressão das informações sobre UBSs mais próximas, quando necessária, deve ser feita pela função que 
+                      faz a chamada à função <em>ubs_mais_próxima;</em></li>
+          <li>Considere a necessidade de alterar o tipo de retorno e/ou os parâmetros da função original;</li>
+          <li>- A correta execução das alterações depende da realização do Exercício 4.</li>
+       </ul>
+   <li>Localizar a expressão "Exercício 4." Adaptar a chamada à função <em>ubs_mais_proxima</em> para as mudanças feitas na função original, caso necessário.  Além disso, imprimir o nome das duas UBSs mais próximas entre si, bem como a distância entre elas. </li>
+  </span>
+</ol>

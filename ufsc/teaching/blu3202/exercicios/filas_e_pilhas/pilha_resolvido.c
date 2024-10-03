@@ -20,7 +20,7 @@ pilha *criaPilha(){
    return p;
 }
 
-void *push(pilha *p, int dado){
+void push(pilha *p, int dado){
    pilhaItem *novo = malloc(sizeof(pilhaItem));
    novo->dado = dado;
    novo->next = p->top; 
@@ -28,7 +28,7 @@ void *push(pilha *p, int dado){
 }
 
 
-void *pop(pilha *p){
+void pop(pilha *p){
    pilhaItem *item = p->top;
    if(item!=NULL)
       p->top = p->top->next;

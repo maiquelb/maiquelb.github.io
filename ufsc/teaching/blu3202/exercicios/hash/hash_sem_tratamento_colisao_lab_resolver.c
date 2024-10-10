@@ -33,7 +33,7 @@ Hash *criaHash(int TABLE_SIZE){
 int gera_hash(char* s, int TABLE_SIZE){
    int i, hash = 0;
    int len_s = strlen(s);
-   for (int i=0;i<len_s;i++){
+   for (i=0;i<len_s;i++){
       hash  = hash + s[i];        
     }
     return hash%TABLE_SIZE;

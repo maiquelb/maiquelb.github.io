@@ -22,7 +22,7 @@ Hash *criaHash(int TABLE_SIZE){
    Aluno *ptAluno;
    h->TABLE_SIZE = TABLE_SIZE;   
    h->itens = malloc(TABLE_SIZE*sizeof(ptAluno));
-   h->qtd = 0;
+   //h->qtd = 0;
    for (i=0;i<h->TABLE_SIZE;i++){  
       h->itens[i]=NULL;      
    }

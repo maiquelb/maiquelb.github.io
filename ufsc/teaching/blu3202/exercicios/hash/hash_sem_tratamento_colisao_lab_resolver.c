@@ -30,6 +30,8 @@ Hash *criaHash(int TABLE_SIZE){
 }
 
 
+/* calcula o hash da chave passada no parâmetro "s"
+   considerando uma tabela hash de tamanho TABLE_SIZE */
 int gera_hash(char* s, int TABLE_SIZE){
    int i, hash = 0;
    int len_s = strlen(s);
@@ -55,6 +57,8 @@ void liberaHash(Hash *h){
 
 /*
    Inserir um novo elemento na tabela hash.
+   h = endereço da tabela hash
+   a = endereço em que os dados do aluno a ser inserido na tabela estão armazenados 
 */
 void insere(Hash *h, Aluno *a){
    if(h==NULL){

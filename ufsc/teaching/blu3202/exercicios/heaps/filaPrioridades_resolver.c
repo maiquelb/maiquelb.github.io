@@ -29,7 +29,6 @@ Tarefa *cria_tarefa(){
    Tarefa *t = malloc(sizeof(Tarefa));
    printf("Nome: ");
    scanf("%s",t->nome);
-   //fgets(t->nome,30,stdin); //usando fgets para incluir espaços em branco (o scanf para de ler ao encontrar um espaço em branco)
    while ((getchar()!='\n') && (getchar()!=EOF) );
    printf("Prioridade: ");
    scanf("%d", &(t->prioridade));
@@ -155,6 +154,7 @@ int main(){
        printf("2 - Consultar prioridade\n");
        printf("3 - Remover\n");
        printf("4 - Imprimir\n");
+       printf("9 - Sair\n");
        printf("\n\nDigite uma opção: ");
        scanf("%d", &opcao);
        

@@ -1,3 +1,6 @@
+/* Para executar em terminal, digitar gcc trabalho_cac3202_20242.c -o trabalho_cac3202_20242 -pthread */
+
+
 #include <stdio.h>
 #include <pthread.h>
 #include <unistd.h>
@@ -23,9 +26,24 @@ int thread_status = 1;
 Visita v; //variável global que armazena a última visita realizada
 float distancia; //variável global que armazena a distância para o obstáculo mais próximo
 
+pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+pthread_cond_t cond = PTHREAD_COND_INITIALIZER;
 
-// Função que simula a leitura de sensores
-void* simular_leitura_de_sensores(void* arg) {
+
+//função que retorna os dados da última visita
+Visita ultima_visita(){
+   return v;
+}
+
+
+//função que retorna a distância atual para o obstáculo mais próximo
+float distancia_obstaculo(){
+   return distancia;
+}
+
+
+// Função que simula a geração de valores de sensores
+void* gerar_valores_de_sensores(void* arg) {
          
     while (thread_status==1) {
         //*** gerar valores aleatórios para distância do obstáculo e coordenadas X,Y:
@@ -45,6 +63,12 @@ void* simular_leitura_de_sensores(void* arg) {
         v.coordenada.y = y;
         v.hora = localtime(&agora);  
         
+        // Sinaliza a thread de leitura de sensores pode executar
+        pthread_mutex_lock(&mutex);
+        pthread_cond_signal(&cond);
+        pthread_mutex_unlock(&mutex);
+
+        
         sleep(1);  // Aguarda um segundo até a próxima leitura de sensores
     }
     return NULL;
@@ -52,24 +76,38 @@ void* simular_leitura_de_sensores(void* arg) {
 
 
 
-//função que retorna os dados da última visita
-Visita ultima_visita(){
-   return v;
+// Função que simula a leitura de valores de sensores
+void* ler_valores_de_sensores(void* arg) {
+    Visita visita;     
+    while (thread_status==1) {
+        // Espera até receber o sinal da thread de geração de valores
+        pthread_mutex_lock(&mutex);
+        pthread_cond_wait(&cond, &mutex);
+        
+        printf("%f\n", distancia_obstaculo()); 
+        visita = ultima_visita();
+        printf("(%d,%d) - %02d:%02d:%02d\n",visita.coordenada.x, visita.coordenada.y, visita.hora->tm_hour, visita.hora->tm_min, visita.hora->tm_sec);
+        
+        pthread_mutex_unlock(&mutex);
+    }
+    return NULL;
 }
 
 
-//função que retorna a distância atual para o obstáculo mais próximo
-float distancia_obstaculo(){
-   return distancia;
-}
 
 int main() {
     pthread_t thread_id;
     Visita visita; 
     int opcao=0;
     
-    // Criação da thread que irá incrementar o contador
-    if (pthread_create(&thread_id, NULL, simular_leitura_de_sensores, NULL) != 0) {
+    // Criação da thread que simula geração de valores de sensores
+    if (pthread_create(&thread_id, NULL, gerar_valores_de_sensores, NULL) != 0) {
+        perror("Erro ao criar thread");
+        return 1;
+    }
+    
+    // Criação da thread que lê de valores de sensores simulados
+    if (pthread_create(&thread_id, NULL, ler_valores_de_sensores, NULL) != 0) {
         perror("Erro ao criar thread");
         return 1;
     }

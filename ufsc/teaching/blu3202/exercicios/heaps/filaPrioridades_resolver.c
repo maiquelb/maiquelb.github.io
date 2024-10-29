@@ -108,7 +108,6 @@ void heap_increase_key(Heap *h, int i, int prioridade){
 Tarefa extract_max(Heap *h){
    if(h->tamanho_do_heap>1){
       /* Implementar a extração */
-      return t;
    }
    
 }

@@ -55,7 +55,7 @@ int parent(int i){
 
 /*
    Mantém a propriedade de heap máximo para o vetor cujo elemento é apontado por v, 
-   de tamanho "tamanho_vetor", a partir da posição "posicao".
+   de tamanho "tamanho_heap", a partir da posição "posicao".
 
    Considera-se que "v" aponte para um max_heap mas v[posicao], pode ser menor que seus dois 
    filhos, violando a propriedade do heap. Esta função faz com que v[posicao] "flutue" para baixo 
@@ -67,7 +67,7 @@ int parent(int i){
    Cormen, Thomas H., Charles E. Leiserson, Ronald L. Rivest and Clifford Stein. 
    Algoritmos: Teoria E Prática. 3 ed.: Campus, 2012. ISBN: 9788535236996.
 */
-Tarefa *max_heapify(Tarefa *v, int posicao, int tamanho_vetor){
+Tarefa *max_heapify(Tarefa *v, int posicao, int tamanho_heap){
    /* implementar */
 }
 
@@ -125,7 +125,7 @@ Tarefa extract_max(Heap *h){
    Cormen, Thomas H., Charles E. Leiserson, Ronald L. Rivest and Clifford Stein. 
    Algoritmos: Teoria E Prática. 3 ed.: Campus, 2012. ISBN: 9788535236996.
 */ 
-int insert(Heap *h, Tarefa x){
+int insert_max(Heap *h, Tarefa x){
     if(h->tamanho_do_heap<h->comprimento){
         /* implementar a inserção */
         return 1;
@@ -160,7 +160,7 @@ int main(){
        
        if(opcao==1){
           Tarefa *t = cria_tarefa();
-          insert(h,*t);         
+          insert_max(h,*t);         
           free(t); t = NULL; 
        }else
        if(opcao==2){

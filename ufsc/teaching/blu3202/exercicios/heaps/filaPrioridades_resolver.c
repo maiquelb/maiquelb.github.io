@@ -22,6 +22,7 @@ Heap *criaHeap(int comprimento){
    h->tamanho_do_heap = 0;
    h->comprimento = comprimento;
    h->v = malloc(sizeof(Tarefa)*comprimento);
+   return h;
 }
 
 

@@ -1,6 +1,15 @@
 #include <stdio.h>
 
 
+/* 
+   Executar pesquisa binária sobre um vetor. Retornar o índice do vetor em que o valor for encontrado. Retornar -1 caso o valor não seja encontrado no vetor.
+   Parâmetros:
+       - inicio: índice inicial do vetor a ser considerado na pesquisa
+       - fim: índice final do vetor a ser considerado na pesquisa
+       - *v: endereço do primeiro elemento do vetor
+       - x : valor a pesquisar
+
+*/
 int binary_search(int inicio, int fim, int *v, int x){
    /* implementar */
 }

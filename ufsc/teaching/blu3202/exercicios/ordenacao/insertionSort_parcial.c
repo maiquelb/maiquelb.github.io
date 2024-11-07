@@ -1,7 +1,13 @@
 #include <stdio.h>
 
 
-/* Ordenar o vetor v, de tamanho s, utilizando o algoritmo de ordenaÃ§Ã£o por inserÃ§Ã£o */
+/* 
+   Ordenar o vetor v, de tamanho n, utilizando o algoritmo de ordenação por seleção.
+   Parâmetros:
+      *v: endereço do primeiro elemento do vetor
+       n: quantidade de elementos no vetor
+
+*/
 void ordena(int *v, int n){
 
 }

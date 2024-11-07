@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 
+/* Ordenar o vetor v, de tamanho s, utilizando o algoritmo de ordenação por inserção */
 void ordena(int *v, int n){
 
 }

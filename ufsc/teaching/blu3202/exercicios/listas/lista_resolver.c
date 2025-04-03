@@ -56,8 +56,7 @@ lstProduto* insere_no_inicio(lstProduto *lista, produto dado){
    lstProduto* novo = malloc(sizeof(lstProduto));
    (*novo).dado = dado;
    (*novo).next = lista;
-   lista = novo;   
-   return lista;
+   return novo;
 }
 
 
@@ -148,7 +147,7 @@ int main(){
          getchar();
       }   
  
-
+	system("clear");
      
    }
    

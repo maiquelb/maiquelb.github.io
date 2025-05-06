@@ -58,7 +58,7 @@ int main(){
 
    while(opcao!=5){
       printf("1 - Empilhar\n");
-      printf("2 - Desmpilhar\n");
+      printf("2 - Desempilhar\n");
       printf("3 - Consultar cabeça (peek)\n");
       printf("4 - Imprimir a pilha\n");
       printf("5 - Sair\n");

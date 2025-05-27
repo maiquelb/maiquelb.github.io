@@ -42,6 +42,8 @@ DroneInfo ultima_informacao(){
 }
 
 
+
+
 //gera identficadores dos drones seguindo o padrão de prefixos de aeronaves brasileiras.
 char *gerar_id() {
     static char ultimo_prefixo[8] = "";  // Guarda o último prefixo gerado
@@ -136,8 +138,8 @@ void* ler_valores_de_sensores(void* arg) {
         }
         
         //*** As duas linhas abaixo ilustram a leitura de sensores. Descomentar para testar 
-        DroneInfo droneInfo = ultima_informacao();
-        printf("Nova leitura: id:%s; posicao:(%f,%f,%f), bateria:%f, hora:%d:%d:%d\n",droneInfo.id, droneInfo.posicao.x, droneInfo.posicao.y, droneInfo.posicao.z, 
+        //DroneInfo droneInfo = ultima_informacao();
+        //printf("Nova leitura: id:%s; posicao:(%f,%f,%f), bateria:%f, hora:%d:%d:%d\n",droneInfo.id, droneInfo.posicao.x, droneInfo.posicao.y, droneInfo.posicao.z, 
                                                                                 droneInfo.bateria, droneInfo.hora->tm_hour, droneInfo.hora->tm_min, droneInfo.hora->tm_sec   );
         
         /**** Implementar a leitura dos sensores aqui ****/

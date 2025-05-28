@@ -139,8 +139,7 @@ void* ler_valores_de_sensores(void* arg) {
         
         //*** As duas linhas abaixo ilustram a leitura de sensores. Descomentar para testar 
         //DroneInfo droneInfo = ultima_informacao();
-        //printf("Nova leitura: id:%s; posicao:(%f,%f,%f), bateria:%f, hora:%d:%d:%d\n",droneInfo.id, droneInfo.posicao.x, droneInfo.posicao.y, droneInfo.posicao.z, 
-                                                                                droneInfo.bateria, droneInfo.hora->tm_hour, droneInfo.hora->tm_min, droneInfo.hora->tm_sec   );
+        //printf("Nova leitura: id:%s; posicao:(%f,%f,%f), bateria:%f, hora:%d:%d:%d\n",droneInfo.id, droneInfo.posicao.x, droneInfo.posicao.y, droneInfo.posicao.z, droneInfo.bateria, droneInfo.hora->tm_hour, droneInfo.hora->tm_min, droneInfo.hora->tm_sec   );
         
         /**** Implementar a leitura dos sensores aqui ****/
         
@@ -177,11 +176,11 @@ int main() {
     }
 
 
-    // Função principal aguarda a tecla ENTER para imprimir o contador
+    // Função principal aguarda a opção do usuário
     while (opcao!=9) {
         printf("Selecione uma das opções abaixo: \n");
-        printf("1. Imprimir a posição atual\n");
-        printf("2. Imprimir o nível da bateria\n");
+        printf("1. Imprimir a posição da última leitura\n");
+        printf("2. Imprimir o nível da bateria da última leitura\n");
         printf("3. Imprimir a distância média para o obstáculo mais próximo nas primeiras 'x' leituras\n");
         printf("4. Imprimir a distância média para o obstáculo mais próximo nas últimas 'x' leituras\n");
         printf("5. Imprimir o horário da primeira visita a um ponto.\n");
@@ -194,15 +193,15 @@ int main() {
         scanf("%d",&opcao);
         switch(opcao){
            case 1: 
-              printf("(%f,%f,%f)\n", info.posicao.x,info.posicao.y,info.posicao.z); 
+              printf("Posição do drone %s: (%f,%f,%f)\n", info.id, info.posicao.x,info.posicao.y,info.posicao.z); 
               break;
            case 2: 
-              printf("%f - %02d:%02d:%02d\n",info.bateria, info.hora->tm_hour, info.hora->tm_min, info.hora->tm_sec);
+              printf("Bateria do drone %s: %f\n", info.id, info.bateria);
               break;
               
-           /**** Implementar as opções 3 a 7 aqui ****/   
+           /**** Implementar as opções 3 a 6 aqui ****/   
            
-           /**** Fim da implementação das opções 3 a 7  ****/
+           /**** Fim da implementação das opções 3 a 6  ****/
            
            case 9: 
               pthread_mutex_lock(&mutex);

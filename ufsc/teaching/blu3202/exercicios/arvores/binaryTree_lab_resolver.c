@@ -120,7 +120,7 @@ void mostra_arvore(Tree *t, int profundidade, char lado){
 }
 
 void main(){
-  Tree *T = create_tree(); /* ponteiro para a raiz da arbore */
+  Tree *T = create_tree(); /* ponteiro para a raiz da arvore */
  
   int option, x;
   while(true){

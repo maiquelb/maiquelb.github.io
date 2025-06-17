@@ -181,11 +181,11 @@ int main() {
         printf("Selecione uma das opções abaixo: \n");
         printf("1. Imprimir a posição da última leitura\n");
         printf("2. Imprimir o nível da bateria da última leitura\n");
-        printf("3. Imprimir a distância média para o obstáculo mais próximo nas primeiras 'x' leituras\n");
-        printf("4. Imprimir a distância média para o obstáculo mais próximo nas últimas 'x' leituras\n");
-        printf("5. Imprimir o horário da primeira visita a um ponto.\n");
-        printf("6. Imprimir o a distância entre o último ponto ponto visitado e o ponto mais distante das coordenadas (0, 0)\n");
-        printf("6. Imprimir o a distância entre o último ponto ponto visitado e o ponto mais próximo das coordenadas (0, 0)\n");
+        printf("3. Imprimir as coordenadas atuais e o nível de baterial de um drone\n");
+        printf("4. Imprimir a rota de retorno de um drone\n");
+        printf("5. Imprimir o identificador do drone que tem prioridade para recarga de bateria\n");
+        printf("6. Imprimir o identificador de um drone por faixa de altitude\n");
+        //printf("6. Imprimir o a distância entre o último ponto ponto visitado e o ponto mais próximo das coordenadas (0, 0)\n");
         printf("9. Encerrar o programa\n");
         
 

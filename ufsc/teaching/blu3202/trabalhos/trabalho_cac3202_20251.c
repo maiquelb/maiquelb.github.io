@@ -181,7 +181,7 @@ int main() {
         printf("Selecione uma das opções abaixo: \n");
         printf("1. Imprimir a posição da última leitura\n");
         printf("2. Imprimir o nível da bateria da última leitura\n");
-        printf("3. Imprimir as coordenadas atuais e o nível de baterial de um drone\n");
+        printf("3. Imprimir as coordenadas atuais e o nível de bateria de um drone\n");
         printf("4. Imprimir a rota de retorno de um drone\n");
         printf("5. Imprimir o identificador do drone que tem prioridade para recarga de bateria\n");
         printf("6. Imprimir o identificador de um drone por faixa de altitude\n");

@@ -16,32 +16,37 @@ typedef struct{
 
 
 fila *criaFila(){
-   fila *f = malloc(sizeof(fila	));
+   fila *f = malloc(sizeof(fila));
    f->inicio = f->fim = NULL;
    return f;
 }
 
-
-/* Inserir um novo dado na fila f*/
 void push(fila *f, int dado){
    filaItem *novo = malloc(sizeof(filaItem));   
    novo->dado = dado;
-   /*implementar abaixo o restante da função*/
+   novo->next = NULL;
+   if(f->fim!=NULL) //verifica se a fila está vazia
+      f->fim->next = novo;
+   else
+      f->inicio = novo;
+   f->fim = novo; 
 }
 
 
-/* Remover um elemento da fila f */
 void pop(fila *f){
    if(f->inicio==NULL){
       printf("Fila vazia.\n");   
+   }else{
+      f->inicio = f->inicio->next;
+      if(f->inicio==NULL) //se a fila ficou vazia
+        f->fim = NULL;     
    }
-   /*implementar abaixo o restante da função*/
 }
 
-
-/* Retornar o dado que se encontra na cabeça da fila. */
 int peek(fila *f){
-
+   if(f->inicio!=NULL)
+      return f->inicio->dado;
+   return -1;
 }
 
 

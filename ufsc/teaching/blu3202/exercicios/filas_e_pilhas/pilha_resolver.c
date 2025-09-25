@@ -20,24 +20,28 @@ pilha *criaPilha(){
    return p;
 }
 
-
-/* Inserir um novo elemento na pilha */
-void *push(pilha *p, int dado){
+void push(pilha *p, int dado){
    pilhaItem *novo = malloc(sizeof(pilhaItem));
    novo->dado = dado;
-   /*implementar abaixo o restante da função*/
+   novo->next = p->top; 
+   p->top = novo;
 }
 
 
-/* Remover um elemento da pilha */
-void *pop(pilha *p){
-   
+void pop(pilha *p){
+   pilhaItem *item = p->top;
+   if(item!=NULL)
+      p->top = p->top->next;
+   free(item);
 }
 
 
-/* Retornar o dado que se encontra na cabeça da pilha */
+
 int peek(pilha *p){
-
+   if(p->top!=NULL)
+      return p->top->dado;
+   else
+      return -1;
 }
 
 void print(pilha *p){

@@ -1,4 +1,4 @@
-/* Para executar em terminal, digitar gcc trabalho_cac3202_veiculo_pontos.c -o trabalho_cac3202_veiculo_pontos -pthread */
+/* Para compilar em terminal, digitar gcc trabalho_cac3202_veiculo_pontos.c -o trabalho_cac3202_veiculo_pontos -pthread */
 
 
 #include <stdio.h>
@@ -23,30 +23,30 @@ typedef struct visita{
 
 
 int thread_status = 1;
-Visita v; //variÃ¡vel global que armazena a Ãºltima visita realizada
-float distancia; //variÃ¡vel global que armazena a distÃ¢ncia para o obstÃ¡culo mais prÃ³ximo
+Visita v; //variável global que armazena a última visita realizada
+float distancia; //variável global que armazena a distância para o obstáculo mais próximo
 
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 pthread_cond_t cond = PTHREAD_COND_INITIALIZER;
 
 
-//funÃ§Ã£o que retorna os dados da Ãºltima visita
+//função que retorna os dados da última visita
 Visita ultima_visita(){
    return v;
 }
 
 
-//funÃ§Ã£o que retorna a distÃ¢ncia atual para o obstÃ¡culo mais prÃ³ximo
+//função que retorna a distância atual para o obstáculo mais próximo
 float distancia_obstaculo(){
    return distancia;
 }
 
 
-// FunÃ§Ã£o que simula a geraÃ§Ã£o de valores de sensores
+// Função que simula a geração de valores de sensores
 void* gerar_valores_de_sensores(void* arg) {
          
     while (thread_status==1) {
-        //*** gerar valores aleatÃ³rios para distÃ¢ncia do obstÃ¡culo e coordenadas X,Y:
+        //*** gerar valores aleatórios para distância do obstáculo e coordenadas X,Y:
         srand(time(NULL));
         int x = rand() % 100;    // Inteiro entre 0 e 99
         int y = rand() % 100;    // Inteiro entre 0 e 99
@@ -69,18 +69,18 @@ void* gerar_valores_de_sensores(void* arg) {
         pthread_mutex_unlock(&mutex);
 
         
-        sleep(1);  // Aguarda um segundo atÃ© a prÃ³xima leitura de sensores
+        sleep(1);  // Aguarda um segundo até a próxima leitura de sensores
     }
     return NULL;
 }
 
 
 
-// FunÃ§Ã£o que simula a leitura de valores de sensores
+// Função que simula a leitura de valores de sensores
 void* ler_valores_de_sensores(void* arg) {
     Visita visita;     
     while (thread_status == 1) {
-        // Espera atÃ© receber o sinal da thread de geraÃ§Ã£o de valores
+        // Espera até receber o sinal da thread de geração de valores
         pthread_mutex_lock(&mutex);
 
         // Verifica se o programa ainda deve continuar antes de esperar pelo sinal
@@ -96,8 +96,8 @@ void* ler_valores_de_sensores(void* arg) {
             break;
         }
         
-        //*** As trÃªs linhas abaixo ilustram a leitura de sensores. Descomentar para testar 
-        //printf("DistÃ¢ncia para o obstÃ¡culo mais prÃ³ximo: %f\n", distancia_obstaculo());
+        //*** As três linhas abaixo ilustram a leitura de sensores. Descomentar para testar 
+        //printf("Distância para o obstáculo mais próximo: %f\n", distancia_obstaculo());
         //Visita visita = ultima_visita();
         //printf("(%d,%d) - %02d:%02d:%02d\n",visita.coordenada.x, visita.coordenada.y, visita.hora->tm_hour, visita.hora->tm_min, visita.hora->tm_sec);
         
@@ -112,7 +112,7 @@ void* ler_valores_de_sensores(void* arg) {
 }
 
 
-//**** Implementar todas as funÃ§Ãµes e estruturas de dados aqui ****/
+//**** Implementar todas as funções e estruturas de dados aqui ****/
 
 
 
@@ -124,33 +124,33 @@ int main() {
     Visita visita; 
     int opcao=0;
     
-    // CriaÃ§Ã£o da thread que simula geraÃ§Ã£o de valores de sensores
+    // Criação da thread que simula geração de valores de sensores
     if (pthread_create(&thread_gerar, NULL, gerar_valores_de_sensores, NULL) != 0) {
         perror("Erro ao criar thread");
         return 1;
     }
     
-    // CriaÃ§Ã£o da thread que lÃª de valores de sensores simulados
+    // Criação da thread que lê de valores de sensores simulados
     if (pthread_create(&thread_ler, NULL, ler_valores_de_sensores, NULL) != 0) {
         perror("Erro ao criar thread");
         return 1;
     }
 
-    // FunÃ§Ã£o principal aguarda a tecla ENTER para imprimir o contador
+    // Função principal aguarda a tecla ENTER para imprimir o contador
     while (opcao!=9) {
-        printf("Selecione uma das opÃ§Ãµes abaixo: \n");
-        printf("1. Imprimir distÃ¢ncia para o obstÃ¡culo mais prÃ³ximo\n");
-        printf("2. Imprimir os dados do Ãºltimo ponto visitado\n");
-        printf("3. Imprimir a distÃ¢ncia mÃ©dia para o obstÃ¡culo mais prÃ³ximo nas primeiras 'x' leituras\n");
-        printf("4. Imprimir a distÃ¢ncia mÃ©dia para o obstÃ¡culo mais prÃ³ximo nas Ãºltimas 'x' leituras\n");
-        printf("5. Imprimir o horÃ¡rio da primeira visita a um ponto.\n");
-        printf("6. Imprimir o horÃ¡rio da ultima visita a um ponto.\n");
-        printf("7. Imprimir a coordenada visitada mais prÃ³xima de um ponto\n");
-        printf("8. Imprimir a coordenada visitada a uma certa distÃ¢ncia da origem\n");
+        printf("Selecione uma das opções abaixo: \n");
+        printf("1. Imprimir distância para o obstáculo mais próximo\n");
+        printf("2. Imprimir os dados do último ponto visitado\n");
+        printf("3. Imprimir a distância média para o obstáculo mais próximo nas primeiras 'x' leituras\n");
+        printf("4. Imprimir a distância média para o obstáculo mais próximo nas últimas 'x' leituras\n");
+        printf("5. Imprimir o horário da primeira visita a um ponto.\n");
+        printf("6. Imprimir o horário da ultima visita a um ponto.\n");
+        printf("7. Imprimir a coordenada visitada mais próxima de um ponto\n");
+        printf("8. Imprimir a coordenada visitada a uma certa distância da origem\n");
         printf("9. Encerrar o programa\n");
         
 
-        printf("\nDigite uma opÃ§Ã£o: ");
+        printf("\nDigite uma opção: ");
         scanf("%d",&opcao);
         switch(opcao){
            case 1: 
@@ -160,9 +160,9 @@ int main() {
               visita = ultima_visita();
               printf("(%d,%d) - %02d:%02d:%02d\n",visita.coordenada.x, visita.coordenada.y, visita.hora->tm_hour, visita.hora->tm_min, visita.hora->tm_sec);
               break;
-           /**** Implementar as opÃ§Ãµes 3 a 7 aqui ****/   
+           /**** Implementar as opções 3 a 7 aqui ****/   
            
-           /**** Fim da implementaÃ§Ã£o das opÃ§Ãµes 3 a 7  ****/
+           /**** Fim da implementação das opções 3 a 7  ****/
            case 9: 
               pthread_mutex_lock(&mutex);
               thread_status = 0;
@@ -170,7 +170,7 @@ int main() {
               pthread_mutex_unlock(&mutex);
               break;     
            default:
-              printf("OpÃ§Ã£o invÃ¡lida\n");
+              printf("Opção inválida\n");
         }
 
         

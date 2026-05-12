@@ -1,4 +1,4 @@
-/* Para executar em terminal, digitar gcc trabalho_cac3202_20242.c -o trabalho_cac3202_20242 -pthread */
+/* Para executar em terminal, digitar gcc trabalho_cac3202_veiculo_pontos.c -o trabalho_cac3202_veiculo_pontos -pthread */
 
 
 #include <stdio.h>
@@ -144,8 +144,9 @@ int main() {
         printf("3. Imprimir a distância média para o obstáculo mais próximo nas primeiras 'x' leituras\n");
         printf("4. Imprimir a distância média para o obstáculo mais próximo nas últimas 'x' leituras\n");
         printf("5. Imprimir o horário da primeira visita a um ponto.\n");
-        printf("6. Imprimir o a distância entre o último ponto ponto visitado e o ponto mais distante das coordenadas (0, 0)\n");
-        printf("6. Imprimir o a distância entre o último ponto ponto visitado e o ponto mais próximo das coordenadas (0, 0)\n");
+        printf("6. Imprimir o horário da ultima visita a um ponto.\n");
+        printf("7. Imprimir a coordenada visitada mais próxima de um ponto\n");
+        printf("8. Imprimir a coordenada visitada a uma certa distância da origem\n");
         printf("9. Encerrar o programa\n");
         
 

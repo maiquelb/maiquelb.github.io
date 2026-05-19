@@ -69,9 +69,24 @@ int parent(int i){
    Algoritmos: Teoria E Prática. 3 ed.: Campus, 2012. ISBN: 9788535236996.
 */
 Tarefa *max_heapify(Tarefa *v, int posicao, int tamanho_heap){
-   /* implementar */
-}
+   int l = 2*posicao-1; //filho à esquerda
+   int r = 2*posicao; //filho à direita
+   int maior; 
+   Tarefa temp;
+   if(l<=tamanho_heap-1 && v[l].prioridade>v[posicao-1].prioridade)
+      maior = l;
+   else 
+      maior = posicao-1;
+   if(r<=tamanho_heap-1 && v[r].prioridade>v[maior].prioridade)
+      maior = r;
+   if(maior!=posicao-1){
+         temp = v[posicao-1];
+         v[posicao-1] = v[maior];
+         v[maior] = temp;
+         max_heapify(v,maior+1,tamanho_heap);
 
+   }
+}
 
 /*
    Converte um vetor v em um heap.

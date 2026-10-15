@@ -1,4 +1,4 @@
-/* Para compilar em terminal, digitar gcc trabalho.c -o trabalho -pthread */
+/* Para compilar em terminal, digitar gcc trabalho_2026_2.c -o trabalho_2026_2 -pthread */
 
 
 #include <stdio.h>
@@ -147,10 +147,10 @@ void* ler_valores_de_sensores(void* arg) {
         // printf("[Ultima manutencao] equipamento: %d; tipo: %d - %02d:%02d:%02d\n",
         //      manutencao.id_equipamento, manutencao.codigo_tipo, manutencao.instante->tm_hour, manutencao.instante->tm_min, manutencao.instante->tm_sec);
         
-        /**** Implementar a leitura dos sensores aqui ****/
+        /**** Implementar a leitura dos sensores  e eventos de manutenção aqui ****/
         
         
-        /**** Finalizar a leitura dos sensores aqui  ****/
+        /**** Finalizar a leitura dos sensores e eventos de manutenção aqui  ****/
         
         pthread_mutex_unlock(&mutex);
     }
@@ -158,11 +158,11 @@ void* ler_valores_de_sensores(void* arg) {
 }
 
 
-//**** Implementar todas as fun��es e estruturas de dados aqui ****/
+//**** Implementar todas as funções e estruturas de dados aqui ****/
 
 
 
-//**** 	 ****/
+//**** 	Finalizar a implementação de todas as funções e estruturas de dados aqui  ****/
 
 
 int main() {
@@ -193,15 +193,15 @@ int main() {
 
     // Fun��o principal aguarda a tecla ENTER para imprimir o contador
     while (opcao!=9) {
-        printf("Selecione uma das op��es abaixo: \n");
-        printf("1. Imprimir a ultima leitura de sensores\n");
-        printf("2. Imprimir a ultima manutencao\n");
-        printf("3. Imprimir a dist�ncia m�dia para o obst�culo mais pr�ximo nas primeiras 'x' leituras\n");
-        printf("4. Imprimir a dist�ncia m�dia para o obst�culo mais pr�ximo nas �ltimas 'x' leituras\n");
-        printf("5. Imprimir o hor�rio da primeira visita a um ponto.\n");
-        printf("6. Imprimir o hor�rio da ultima visita a um ponto.\n");
-        printf("7. Imprimir a coordenada visitada mais pr�xima de um ponto\n");
-        printf("8. Imprimir a coordenada visitada a uma certa dist�ncia da origem\n");
+        printf("Selecione uma das opções abaixo: \n");
+        printf("1. Imprimir a ultima leitura de sensores.\n");
+        printf("2. Imprimir a ultima manutencao.\n");
+        printf("3. Imprimir a vibração média para um equipamento nas 'x' leituras mais antigas.\n");
+        printf("4. Imprimir a vibração média para um equipamento nas 'x' leituras mais antigas.\n");
+        printf("5. Imprimir o instante da primeira manutenção de um equipamento.\n");
+        printf("6. Imprimir o instante da manutenção mais recente de um equipamento.\n");
+        printf("7. Imprimir o menor valor de vibração mais próximo de um valor 'v'.\n");
+        printf("8. Imprimir os 'k' equipamentos com as maiores vibrações.\n");
         printf("9. Encerrar o programa\n");
         
 
@@ -218,9 +218,9 @@ int main() {
             printf("[Ultima manutencao] equipamento: %d; tipo: %d - %02d:%02d:%02d\n",
               manutencao.id_equipamento, manutencao.codigo_tipo, manutencao.instante->tm_hour, manutencao.instante->tm_min, manutencao.instante->tm_sec);
               break;
-           /**** Implementar as op��es 3 a 7 aqui ****/   
+           /**** Implementar as opções 3 a 8 aqui ****/   
            
-           /**** Fim da implementa��o das op��es 3 a 7  ****/
+           /**** Fim da implementação das opçõ  es 3 a 7  ****/
            case 9: 
               pthread_mutex_lock(&mutex);
               thread_status = 0;
@@ -228,7 +228,7 @@ int main() {
               pthread_mutex_unlock(&mutex);
               break;     
            default:
-              printf("Op��o inv�lida\n");
+              printf("Opção inválida\n");
         }
 
         

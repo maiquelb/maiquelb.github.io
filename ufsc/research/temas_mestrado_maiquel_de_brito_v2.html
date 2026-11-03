@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Temas propostos para trabalhos de mestrado em sistemas multiagente, agentes e sistemas ciberfísicos.">
+  <title>Temas de mestrado | Maiquel de Brito</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+    :root {
+      --ink: #202b38;
+      --muted: #5d6977;
+      --navy: #12304a;
+      --blue: #245d7a;
+      --accent: #b28a45;
+      --paper: #ffffff;
+      --page: #f3f5f7;
+      --line: #dfe5ea;
+      --soft: #f6f8fa;
+      --max: 980px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--ink);
+      font-family: "IBM Plex Sans", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.72;
+    }
+    a { color: var(--blue); }
+    .topline { height: 5px; background: var(--accent); }
+    header {
+      background: var(--navy);
+      color: white;
+      padding: 44px 24px 40px;
+    }
+    .header-inner, main, footer { max-width: var(--max); margin: 0 auto; }
+    .institution {
+      color: #d4e0e9;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: .76rem;
+      font-weight: 700;
+      margin: 0 0 20px;
+    }
+    h1 {
+      font-family: "Space Grotesk", "IBM Plex Sans", "Segoe UI", sans-serif;
+      font-weight: 600;
+      font-size: clamp(2.1rem, 5vw, 3.35rem);
+      line-height: 1.12;
+      letter-spacing: -.04em;
+      margin: 0;
+    }
+    .subtitle { color: #d9e3eb; max-width: 660px; margin: 17px 0 0; font-size: 1.08rem; }
+    .author { margin-top: 25px; color: white; font-weight: 600; }
+    main { padding: 36px 22px 64px; }
+    .intro {
+      max-width: 790px;
+      color: var(--muted);
+      font-size: 1.04rem;
+      margin: 0 0 30px;
+    }
+    .section-label {
+      display: inline-block;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: .11em;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: .72rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    h2 {
+      font-family: "Space Grotesk", "IBM Plex Sans", "Segoe UI", sans-serif;
+      color: var(--navy);
+      font-size: clamp(1.8rem, 4vw, 2.35rem);
+      font-weight: 600;
+      letter-spacing: -.035em;
+      line-height: 1.2;
+      margin: 0 0 15px;
+    }
+    .topics { display: grid; gap: 20px; }
+    article {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 18px rgba(18, 48, 74, .035);
+    }
+    .topic-head {
+      padding: 22px 26px 17px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(110deg, #fff 0%, #f8fafb 100%);
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 15px;
+      align-items: start;
+    }
+    .number {
+      width: 38px; height: 38px;
+      display: grid; place-items: center;
+      border-radius: 50%;
+      color: white; background: var(--blue);
+      font-weight: 700; font-size: .92rem;
+    }
+    h3 {
+      color: var(--navy);
+      font-family: "IBM Plex Sans", "Segoe UI", Roboto, sans-serif;
+      font-weight: 600;
+      letter-spacing: -.018em;
+      font-size: 1.28rem;
+      line-height: 1.35;
+      margin: 2px 0 0;
+    }
+    .topic-body { padding: 21px 26px 25px; }
+    .topic-body p { margin: 0 0 17px; }
+    .topic-body p:last-child { margin-bottom: 0; }
+    .topic-body strong { color: var(--navy); }
+    .problem, .objective {
+      padding: 15px 18px;
+      border-left: 3px solid var(--accent);
+      background: var(--soft);
+      margin-top: 14px;
+    }
+    .objective { border-left-color: var(--blue); }
+    .field-label {
+      display: block;
+      font-size: .74rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      font-weight: 800;
+      color: var(--blue);
+      margin-bottom: 4px;
+    }
+    .problem p, .objective p { margin: 0; }
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 22px;
+      color: var(--muted);
+      font-size: .88rem;
+    }
+    footer .footer-inner { max-width: var(--max); margin: 0 auto; }
+    @media (max-width: 600px) {
+      header { padding: 34px 22px 32px; }
+      main { padding: 28px 14px 44px; }
+      .topic-head { padding: 19px 18px 15px; grid-template-columns: 34px 1fr; gap: 12px; }
+      .number { width: 32px; height: 32px; }
+      .topic-body { padding: 18px; }
+      h3 { font-size: 1.14rem; }
+    }
+    @media print {
+      body { background: white; font-size: 11pt; }
+      header { padding: 24px; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+      main { padding: 24px 0; }
+      article { break-inside: avoid; box-shadow: none; margin-bottom: 14px; }
+      footer { padding: 14px 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topline"></div>
+  <header>
+    <div class="header-inner">
+      <p class="institution">Universidade Federal de Santa Catarina</p>
+      <h1>Temas de mestrado</h1>
+      <p class="subtitle">Possibilidades de pesquisa em agentes, sistemas multiagente e sistemas ciberfísicos.</p>
+      <p class="author">Maiquel de Brito</p>
+    </div>
+  </header>
+
+  <main>
+    <h2>Temas de pesquisa</h2>
+    <p class="intro">
+      Os temas a seguir são alguns dentre os possíveis de serem tratados em uma pesquisa de mestrado. 
+      Temas apresentados pelo candidato também são admitidos, caso sejam adequados. Por fim, o tema de pesquisa pode ser definido pelo candidato em conjunto com o orientador.
+
+    <div class="topics">
+      <article>
+        <div class="topic-head">
+          <div class="number">01</div>
+          <h3>Integração físico-cognitiva baseada em comunicação serial para robôs controlados por agentes</h3>
+        </div>
+        <div class="topic-body">
+          <p>
+            Um robô controlado por um agente pode ser dividido em duas partes: a porção cognitiva,
+            responsável pelo raciocínio que leva a tomada de decisão, e a porção física, composta por sensores e
+            atuadores conectados a uma plataforma embarcada, que permite obter informações sobre o
+            ambiente e atuar sobre ele. Algumas aplicações podem requerer que a porção cognitiva seja
+            executada em um dispositivo que se integra à plataforma embarcada por comunicação serial.
+          </p>
+          <div class="problem">
+            <span class="field-label">Problema</span>
+            <p>
+              A comunicação serial impõe desafios à integração físico-cognitiva: tratamento de falhas
+              na transmissão de dados dos sensores para o sistema de percepções e das ações do agente
+              para o sistema embarcado que controla os atuadores; sincronização entre a obtenção dos
+              valores dos sensores e a atualização das percepções; e detecção e tratamento de atuações
+              malsucedidas.
+            </p>
+          </div>
+          <div class="objective">
+            <span class="field-label">Objetivo</span>
+            <p>
+              Desenvolver um modelo de programação para plataformas embarcadas e agentes que permita
+              a integração, via comunicação serial, com os sistemas de percepção e ação dos agentes,
+              incluindo tratamento de falhas de comunicação e de execução de atuações.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <article>
+        <div class="topic-head">
+          <div class="number">02</div>
+          <h3>Controle de ações baseadas em múltiplas atuações em robôs controlados por agentes</h3>
+        </div>
+        <div class="topic-body">
+          <p>
+            Um robô controlado por um agente pode ser dividido em duas partes: a porção cognitiva,
+            responsável pelo raciocínio que leva a tomada de decisão, e a porção física, composta por sensores e
+            atuadores conectados a uma plataforma embarcada, que permite obter informações sobre o
+            ambiente e atuar sobre ele. Neste tipo de robô, as ações disparadas pela porção cognitiva são
+            realizadas por meio do acionamento de atuadores que compõem a parte física do sistema.
+            Uma ação pode envolver múltiplos atuadores, em sequência ou simultaneamente. Por exemplo,
+            em um veículo com quatro rodas tracionadas por motores individuais, movimentos para a
+            frente, para trás ou para os lados requerem atuações simultâneas dos quatro motores.
+          </p>
+          <div class="problem">
+            <span class="field-label">Problema</span>
+            <p>
+              Ao disparar uma ação, o sistema cognitivo deixa de controlar diretamente a execução das
+              atuações correspondentes e pode não detectar se elas foram executadas com sucesso. Essa
+              detecção pode ser essencial para a evolução do ciclo de raciocínio do agente e requer
+              integração com os sistemas de controle dos atuadores, capazes de identificar anomalias,
+              como falhas em atuadores. Ações com múltiplas atuações também podem exigir estratégias
+              para lidar com a falha de uma única atuação dentro do conjunto esperado.
+            </p>
+          </div>
+          <div class="objective">
+            <span class="field-label">Objetivo</span>
+            <p>
+              Desenvolver meios para controlar a execução efetiva das atuações relacionadas às ações
+              dos agentes e tratar eventuais anomalias, integrando esses mecanismos ao ciclo de
+              raciocínio do agente.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <article>
+        <div class="topic-head">
+          <div class="number">03</div>
+          <h3>Representação de objetos em instituições artificiais</h3>
+        </div>
+        <div class="topic-body">
+          <p>
+            Instituições artificiais que seguem o modelo SAI atribuem funções institucionais a agentes,
+            eventos e estados do ambiente. Isso permite que mecanismos voltados aos aspectos sociais de
+            um sistema multiagente atuem sobre os elementos que desempenham essas funções,
+            independentemente de quais sejam esses elementos.
+          </p>
+          <div class="problem">
+            <span class="field-label">Problema</span>
+            <p>
+              Objetos também podem ter uma função institucional. Por exemplo, um documento assinado
+              pode exercer a função de contrato. Atualmente, é possível atribuir funções institucionais
+              a eventos, como a assinatura de um documento, e a estados, como o documento assinado,
+              mas não expressar que um documento assinado é um contrato.
+            </p>
+          </div>
+          <div class="objective">
+            <span class="field-label">Objetivo</span>
+            <p>
+              Estender o modelo SAI para representar equivalentes institucionais a objetos. Essa
+              representação deve permitir especificar o comportamento dos agentes em relação a objetos
+              em um nível abstrato e desacoplado, mas ainda conectado ao ambiente em que atuam.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <article>
+        <div class="topic-head">
+          <div class="number">04</div>
+          <h3>Estruturação de interações sociais em grupos de mensagens com recursos de programação multiagente</h3>
+        </div>
+        <div class="topic-body">
+          <p>
+            Em aplicativos de mensagens, grupos podem ser vistos como meios de interação entre
+            múltiplos agentes, humanos e artificiais. Essas interações podem ser complexas e modeladas
+            por abstrações sociais como regras de conduta, fluxos de interação predefinidos e
+            compromissos assumidos por meio de mensagens. Pesquisas em sistemas multiagente têm
+            produzido abordagens que permitem modelar boa parte dessas interações.
+          </p>
+          <div class="problem">
+            <span class="field-label">Problema</span>
+            <p>
+              Em geral, as interações em grupos de aplicativos de mensagens não são estruturadas.
+              Assim, as abstrações sociais que as modelam permanecem implícitas, na mente dos membros,
+              e sua execução correta fica sujeita à interpretação de cada participante. Quando há
+              agentes de software envolvidos, o problema é ampliado, pois eles também precisam manter
+              uma representação interna dessas interações sociais.
+            </p>
+          </div>
+          <div class="objective">
+            <span class="field-label">Objetivos</span>
+            <p>
+              Investigar o uso de abstrações e ferramentas de sistemas multiagente para estruturar
+              interações sociais em grupos de aplicativos de mensagens que envolvam agentes humanos e
+              artificiais; e adaptar as ferramentas existentes para uso efetivo nesses grupos.
+            </p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>Maiquel de Brito</span> · Universidade Federal de Santa Catarina (UFSC)
+    </div>
+  </footer>
+</body>
+</html>
